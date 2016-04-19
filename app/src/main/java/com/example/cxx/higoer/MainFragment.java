@@ -18,24 +18,29 @@ import java.util.Calendar;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
     private ImageView iv;
-    private Button btnDate,search;
+    private Button btnDate,search,btnAddress;
     Calendar calendar = Calendar.getInstance();
     private int syear,smonth,sday,sweek;
     private String address = "香港";
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.main_layout,container,false);
         iv = (ImageView) root.findViewById(R.id.iv);
+        btnAddress = (Button) root.findViewById(R.id.btnAddress);
+        btnDate = (Button) root.findViewById(R.id.btnDate);
+        search = (Button) root.findViewById(R.id.search);
+        btnAddress.setOnClickListener(this);
+        btnDate.setOnClickListener(this);
+        search.setOnClickListener(this);
+        dateInit(root);
+        return root;
+    }
+    public void dateInit(View root){
         syear = calendar.get(Calendar.YEAR);
         smonth = calendar.get(Calendar.MONTH)+1;
         sday = calendar.get(Calendar.DAY_OF_MONTH);
         sweek = calendar.get(Calendar.DAY_OF_WEEK);
-        btnDate = (Button) root.findViewById(R.id.btnDate);
-        btnDate.setOnClickListener(this);
-        search = (Button) root.findViewById(R.id.search);
-        search.setOnClickListener(this);
-        root.findViewById(R.id.button).setOnClickListener(this);
+
         btnDate.setText("出发时间："+syear+"-"+smonth+"-"+sday+"      星期"+ChooseWeek(sweek));
-        return root;
     }
     private String ChooseWeek(int w){
         switch (w){
@@ -52,7 +57,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
      switch (v.getId()){
-         case R.id.button:
+         case R.id.btnAddress:
              Intent intent = new Intent(getActivity(),AddressChoose.class);
              startActivityForResult(intent,0);
              break;
@@ -105,4 +110,5 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             address = "日本";
         }
     }
+
 }

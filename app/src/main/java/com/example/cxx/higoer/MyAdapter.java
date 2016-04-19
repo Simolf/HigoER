@@ -1,30 +1,26 @@
 package com.example.cxx.higoer;
 
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageCache;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.ImageLoader.ImageListener;
+import com.example.cxx.higoer.volleyget.GetImage;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
     private List<ItemData> datas;
-    String stringjson;
+    public GetImage getImage = new GetImage();
     MyAdapter(List<ItemData>datas){
         System.out.println("constructor");
         this.datas = datas;
@@ -51,7 +47,7 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private View root;
-        private ImageView photo;
+        private NetworkImageView photo;
         private TextView name;
         private TextView phone;
         private TextView type;
@@ -61,7 +57,7 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
         public TextView getName() {
             return name;
         }
-        public ImageView getPhoto() {
+        public NetworkImageView getPhoto() {
             return photo;
         }
         public TextView getType() {
@@ -69,7 +65,7 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
         }
         public ViewHolder(View root) {
             super(root);
-            photo = (ImageView) root.findViewById(R.id.List_photo);
+            photo = (NetworkImageView)root.findViewById(R.id.List_photo);
             name = (TextView) root.findViewById(R.id.List_name);
             phone = (TextView) root.findViewById(R.id.List_phone);
             type = (TextView) root.findViewById(R.id.List_type);
@@ -95,19 +91,14 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
         System.out.println("ViewHolder");
         System.out.println(i);
         vh.getName().setText(datas.get(i).getName());
+        System.out.println(datas.get(i).getName());
         vh.getPhone().setText(datas.get(i).getPhone());
         vh.getType().setText(datas.get(i).getCar_number());
-        vh.getPhoto().setImageResource(R.drawable.ic_launcher);
-        //vh.getName().setText(data.getName(i));
-//        vh.getType().setText(data.getType(i));
-//        vh.getPhone().setText(data.getPhone(i));
-//        data.getImage(vh,data.getPhoto(i));
-        //ItemData itemData =data[i];
-
-//        vh.getTvTitle().setText(itemData.title);
-//        vh.getTvContent().setText(itemData.content);
-        //定义tag全局变量，用于验证点击事件的发生
-        //vh.itemView.setTag(itemData.title);
+        System.out.println(datas.get(i).getPhoto());
+        getImage.getNetworkImage(vh.getPhoto(),datas.get(i).getPhoto());
+//        getImage(vh, datas.get(i).getPhoto());
+//        vh.getPhoto().setImageResource(R.drawable.ic_launcher);
+        vh.itemView.setTag(datas.get(i).getName());
     }
 
     @Override
@@ -117,4 +108,29 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
         return 5;
 
     }
+//    public void getImage(ViewHolder viewHolder,String imageUrl){
+//        System.out.println("获取照片");
+//        RequestQueue requestQueue = MyApplication.getsInstance().getMyRequestQueue();
+//        final LruCache<String,Bitmap> lruCache =MyApplication.getsInstance().getLruCache();
+//        ImageCache imageCache = new ImageCache() {
+//            @Override
+//            public Bitmap getBitmap(String s) {
+//                System.out.println("正在获取照片");
+//                return lruCache.get(s);
+//            }
+//
+//            @Override
+//            public void putBitmap(String s, Bitmap bitmap) {
+//                System.out.println("传递照片地址："+s);
+//                lruCache.put(s,bitmap);
+//            }
+//        };
+//        ImageLoader imageLoader = new ImageLoader(requestQueue,imageCache);
+//        viewHolder.getPhoto().setTag("url");
+//        viewHolder.getPhoto().setDefaultImageResId(R.drawable.ic_launcher);
+//        viewHolder.getPhoto().setErrorImageResId(R.drawable.ic_launcher);
+//        viewHolder.getPhoto().setImageUrl(imageUrl, imageLoader);
+//        System.out.println("照片获取结束");
+//
+//    }
 }
