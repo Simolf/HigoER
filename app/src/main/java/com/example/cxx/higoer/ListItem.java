@@ -20,12 +20,12 @@ import java.util.List;
 
 public class ListItem extends Activity {
     private List<ItemData> itemDatas;
-    private final String  url ="http://10.0.2.2/personjson.php";
+    private String  url ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_item);
-
+        getBundle();
         System.out.println("开始请求");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
@@ -39,7 +39,7 @@ public class ListItem extends Activity {
                                 Gson gson = new Gson();
                                 itemDatas = gson.fromJson(dataString,new TypeToken<List<ItemData>>(){}.getType());
                                 System.out.println("解析完毕");
-                                init();
+                                listInfo();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -55,7 +55,17 @@ public class ListItem extends Activity {
         MyApplication.getsInstance().getMyRequestQueue().add(jsonObjectRequest);
 
     }
-    private void init() {
+
+    private void getBundle() {
+        Intent i = getIntent();
+        Bundle b= i.getExtras();
+        String time = b.getString("time");
+        String place = b.getString("address");
+        url = "http://10.0.2.2/personjson.php?depart_time="+time+"&place="+place;
+
+    }
+
+    private void listInfo() {
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);

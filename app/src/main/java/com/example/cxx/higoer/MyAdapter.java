@@ -89,7 +89,10 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
     @Override
     //子对象的数量
     public int getItemCount() {
-        return 5;
+        if(datas.size()<5)
+            return datas.size();
+        else
+            return 5;
 
     }
 }

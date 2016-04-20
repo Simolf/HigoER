@@ -27,6 +27,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     GetImage getImage= new GetImage();
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.main_layout,container,false);
+        init(root);
+        dateInit(root);
+        return root;
+    }
+    //初始化界面
+    public void init(View root){
         iv = (ImageView) root.findViewById(R.id.iv);
         btnAddress = (Button) root.findViewById(R.id.btnAddress);
         btnDate = (Button) root.findViewById(R.id.btnDate);
@@ -34,9 +40,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnAddress.setOnClickListener(this);
         btnDate.setOnClickListener(this);
         search.setOnClickListener(this);
-        dateInit(root);
-        return root;
+        getImage.getLoadImage(iv,"http://10.0.2.2/address0.jpg");
     }
+    //时间初始化，当前系统时间
     public void dateInit(View root){
         syear = calendar.get(Calendar.YEAR);
         smonth = calendar.get(Calendar.MONTH)+1;
@@ -45,6 +51,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         btnDate.setText("出发时间："+syear+"-"+smonth+"-"+sday+"      星期"+ChooseWeek(sweek));
     }
+    //根据当前时间判断周几
     private String ChooseWeek(int w){
         switch (w){
             case 2:return "一";
@@ -58,12 +65,15 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
     }
     @Override
+    //按钮点击事件
     public void onClick(View v) {
      switch (v.getId()){
+         //地址选择
          case R.id.btnAddress:
              Intent intent = new Intent(getActivity(),AddressChoose.class);
              startActivityForResult(intent,0);
              break;
+         //时间选择
          case R.id.btnDate:
              new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                  @Override
@@ -81,12 +91,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                  }
              },syear,smonth-1,sday).show();
              break;
+         //搜索按钮，跳转
          case R.id.search:
              Intent intent1 = new Intent(getActivity(),ListItem.class);
-             intent1.putExtra("year",syear);
-             intent1.putExtra("month",smonth);
-             intent1.putExtra("day",sday);
-             intent1.putExtra("address",address);
+             String time = syear+"-"+smonth+"-"+sday;
+             System.out.println(time);
+             System.out.println(address);
+             Bundle b = new Bundle();
+             b.putString("time",time);//时间
+             b.putString("address",address);//地点
+             intent1.putExtras(b);
              startActivity(intent1);
              break;
      }
