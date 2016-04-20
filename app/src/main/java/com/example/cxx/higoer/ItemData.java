@@ -26,17 +26,14 @@ import org.json.JSONObject;
 public class ItemData{
     private String name;
     private String phone;
-    private String car_number;
+    private String card_number;
     private String photo;
-
-    public String getCar_number() {
-        return car_number;
+    public String getCard_number() {
+        return card_number;
     }
-
-    public void setCar_number(String car_number) {
-        this.car_number = car_number;
+    public void setCard_number(String card_number) {
+        this.card_number = card_number;
     }
-
     public String getName() {
         return name;
     }

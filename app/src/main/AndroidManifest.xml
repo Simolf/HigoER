@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cxx.higoer" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddressChoose"
             android:label="@string/title_activity_address_choose" >
@@ -27,6 +26,10 @@
         <activity
             android:name=".ListItem"
             android:label="@string/title_activity_list_item" >
+        </activity>
+        <activity
+            android:name=".SellerInfo"
+            android:label="@string/title_activity_buyer_info" >
         </activity>
     </application>
 

@@ -1,16 +1,14 @@
 package com.example.cxx.higoer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -18,7 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListItem extends Activity {
@@ -67,8 +64,12 @@ public class ListItem extends Activity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         myAdapter.setOnItemCliclListener(new MyAdapter.OnRecyclerViewItemClickListener() {
             @Override
-            public void onItemClick(View view, String data) {
-
+            public void onItemClick(String data) {
+                System.out.println("要传递的卡号是：" + data);
+                Intent intent = new Intent(ListItem.this,SellerInfo.class);
+                intent.putExtra("card_number",data);
+                startActivity(intent);
+//                Toast.makeText(getApplicationContext(),"跳转卖家信息",Toast.LENGTH_SHORT).show();
             }
         });
     }

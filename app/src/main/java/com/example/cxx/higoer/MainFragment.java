@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cxx.higoer.volleyget.GetImage;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +24,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     Calendar calendar = Calendar.getInstance();
     private int syear,smonth,sday,sweek;
     private String address = "香港";
+    GetImage getImage= new GetImage();
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.main_layout,container,false);
         iv = (ImageView) root.findViewById(R.id.iv);
@@ -93,20 +96,25 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String respont = data.getStringExtra("address");
+        String url = "http://10.0.2.2/address";
         if(respont.equals("img1")){
-            iv.setBackgroundResource(R.drawable.hk1);
+            getImage.getLoadImage(iv, url + "0.jpg");
+//            iv.setBackgroundResource(R.drawable.hk1);
             address = "香港";
         }
         if(respont.equals("img2")){
-            iv.setBackgroundResource(R.drawable.am);
+            getImage.getLoadImage(iv,url+"1.jpg");
+//            iv.setBackgroundResource(R.drawable.am);
             address = "澳门";
         }
         if(respont.equals("img3")){
-            iv.setBackgroundResource(R.drawable.hg);
+            getImage.getLoadImage(iv,url+"2.jpg");
+//            iv.setBackgroundResource(R.drawable.hg);
             address = "韩国";
         }
         if(respont.equals("img4")){
-            iv.setBackgroundResource(R.drawable.rb);
+            getImage.getLoadImage(iv,url+"3.jpg");
+//            iv.setBackgroundResource(R.drawable.rb);
             address = "日本";
         }
     }

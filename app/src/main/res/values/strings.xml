@@ -6,4 +6,5 @@
     <string name="title_activity_choose_date">ChooseDate</string>
     <string name="title_activity_address_choose">AddressChoose</string>
     <string name="title_activity_list_item">ListItem</string>
+    <string name="title_activity_buyer_info">BuyerInfo</string>
 </resources>
