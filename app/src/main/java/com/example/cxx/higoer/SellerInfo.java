@@ -12,6 +12,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.cxx.higoer.order_place.PlaceOrder;
 import com.example.cxx.higoer.volleyget.GetImage;
 import com.google.gson.Gson;
 
@@ -48,7 +49,7 @@ public class SellerInfo extends Activity {
         findhim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
+                Intent i = new Intent(SellerInfo.this, PlaceOrder.class);
             }
         });
     }

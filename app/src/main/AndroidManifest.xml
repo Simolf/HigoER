@@ -31,6 +31,10 @@
             android:name=".SellerInfo"
             android:label="@string/title_activity_buyer_info" >
         </activity>
+        <activity
+            android:name=".order_place.PlaceOrder"
+            android:label="" >
+        </activity>
     </application>
 
 </manifest>

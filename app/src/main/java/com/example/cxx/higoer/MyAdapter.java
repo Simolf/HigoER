@@ -10,13 +10,17 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.example.cxx.higoer.volleyget.GetImage;
 
 import java.util.List;
+import java.util.Random;
 
 class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
+    private int listArray[];
     private List<ItemData> datas;
     public GetImage getImage = new GetImage();
-    MyAdapter(List<ItemData>datas){
+    MyAdapter(List<ItemData>datas, int listArray[]){
         System.out.println("constructor");
         this.datas = datas;
+        this.listArray = listArray;
+        System.out.println(listArray.toString());
     }
 
     //模仿OnItemClickListener自定义接口
@@ -78,21 +82,18 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         ViewHolder vh = (ViewHolder) viewHolder;
-        vh.getName().setText(datas.get(i).getName());
-        System.out.println(datas.get(i).getName());
-        vh.getPhone().setText(datas.get(i).getPhone());
-        vh.getType().setText(datas.get(i).getCard_number());
-        getImage.getNetworkImage(vh.getPhoto(),datas.get(i).getPhoto());
-        vh.itemView.setTag(datas.get(i).getCard_number());
+        vh.getName().setText(datas.get(listArray[i]).getName());
+        System.out.println(datas.get(listArray[i]).getName());
+        vh.getPhone().setText(datas.get(listArray[i]).getPhone());
+        vh.getType().setText(datas.get(listArray[i]).getCard_number());
+        getImage.getNetworkImage(vh.getPhoto(),datas.get(listArray[i]).getPhoto());
+        vh.itemView.setTag(datas.get(listArray[i]).getCard_number());
     }
 
     @Override
     //子对象的数量
     public int getItemCount() {
-        if(datas.size()<5)
-            return datas.size();
-        else
-            return 5;
-
+            return listArray.length;
     }
+
 }

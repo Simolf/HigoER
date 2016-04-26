@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:text="地址"
             />
-        <ImageView
+        <ImageButton
             android:id="@+id/List_change"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -42,7 +42,7 @@
         android:layout_marginBottom="10dp"
         >
         <ImageButton
-            android:id="@+id/List_left"
+            android:id="@+id/time_left"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="left"
@@ -55,8 +55,8 @@
             android:layout_gravity="center"
             android:text="地址"
             />
-        <ImageView
-            android:id="@+id/List_right"
+        <ImageButton
+            android:id="@+id/time_right"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="right"
