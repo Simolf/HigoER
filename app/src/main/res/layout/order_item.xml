@@ -16,6 +16,7 @@
         android:id="@+id/price"
         android:background="@drawable/order_bg"
         android:lines="1"
+        android:numeric="decimal"
         android:layout_weight="1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
@@ -23,6 +24,7 @@
         android:id="@+id/amount"
         android:background="@drawable/order_bg"
         android:lines="1"
+        android:numeric="integer"
         android:layout_weight="1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />

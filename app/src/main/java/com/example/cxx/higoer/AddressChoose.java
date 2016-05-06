@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import com.example.cxx.higoer.volleyget.GetImage;
 
@@ -12,10 +13,12 @@ public class AddressChoose extends Activity implements View.OnClickListener {
     private ImageView[] img = new ImageView[4];
     private String url = "http://10.0.2.2/address";
     public String reponst=null;
+    private SearchView search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_choose);
+        search = (SearchView) findViewById(R.id.search);
         img[0] = (ImageView) findViewById(R.id.img1);
         img[1] = (ImageView) findViewById(R.id.img2);
         img[2] = (ImageView) findViewById(R.id.img3);
@@ -29,6 +32,7 @@ public class AddressChoose extends Activity implements View.OnClickListener {
             String imageUrl = url+i+".jpg";
             getImage.getLoadImage(img[i],imageUrl);
         }
+
 
     }
     @Override
@@ -48,6 +52,8 @@ public class AddressChoose extends Activity implements View.OnClickListener {
                 break;
         }
         Intent intent = new Intent();
+        if(reponst==null)
+            reponst = "img1";
         intent.putExtra("address",reponst);
         setResult(1,intent);
         finish();

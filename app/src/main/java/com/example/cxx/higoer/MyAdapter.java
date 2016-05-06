@@ -72,7 +72,7 @@ class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_set,null);
+         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_set,viewGroup,false);
         ViewHolder vh = new ViewHolder(view);
         //为每个item添加点击事件
         view.setOnClickListener(this);

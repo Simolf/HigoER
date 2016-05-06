@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_add"
-        android:title="ADD"
+        android:title="添加"
         android:orderInCategory="100"
         app:showAsAction="always"
         />
     <item android:id="@+id/action_remove"
-        android:title="REMOVE"
+        android:title="删除"
         android:orderInCategory="100"
         app:showAsAction="always"
         />

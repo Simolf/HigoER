@@ -5,11 +5,11 @@
     tools:context=".MainActivity">
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:id="@+id/title"
         android:text="HigoER"
         android:gravity="center"
-        android:background="#32568c"
+        android:background="#5CACEE"
         />
     <FrameLayout
         android:id="@+id/content"

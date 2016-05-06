@@ -26,7 +26,7 @@ import java.util.Random;
 public class ListItem extends Activity implements View.OnClickListener {
     private int currentPosition;//当前位置
     private int resultArray[];//存放随机卖家信息
-    private List<ItemData> itemDatas;
+    private List<ItemData> itemDatas;//卖家信息对象列表
     private String  url ;
     private TextView tv_add,tv_time;
     private ImageButton back,change,time_left,time_right;

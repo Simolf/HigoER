@@ -1,4 +1,5 @@
 package com.example.cxx.higoer;
+import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.cxx.higoer.volleyget.GetImage;
@@ -40,7 +42,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnAddress.setOnClickListener(this);
         btnDate.setOnClickListener(this);
         search.setOnClickListener(this);
-        getImage.getLoadImage(iv,"http://10.0.2.2/address0.jpg");
+        getImage.getLoadImage(iv, "http://10.0.2.2/address0.jpg");
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) iv.getLayoutParams();
+
     }
     //时间初始化，当前系统时间
     public void dateInit(View root){

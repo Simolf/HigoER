@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:background="@drawable/order_bg"
             android:gravity="center"
-            android:text="单价"
+            android:text="单价/元"
             />
         <TextView
             android:layout_width="fill_parent"
@@ -42,5 +42,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
+    <Button
+        android:id="@+id/sumbit"
+        android:text="确定"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/corners_bg"
+        android:layout_marginTop="20dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
