@@ -28,8 +28,8 @@ public class ListItem extends Activity implements View.OnClickListener {
     private int resultArray[];//存放随机卖家信息
     private List<ItemData> itemDatas;//卖家信息对象列表
     private String  url ;
-    private TextView tv_add,tv_time;
-    private ImageButton back,change,time_left,time_right;
+    private TextView tv_add;
+    private ImageButton back,change;
     RecyclerView recyclerView ;
     LinearLayoutManager layoutManager;
     @Override
@@ -48,18 +48,12 @@ public class ListItem extends Activity implements View.OnClickListener {
         String place = b.getString("address");
         url = "http://10.0.2.2/personjson.php?depart_time="+time+"&place="+place;
         tv_add = (TextView) findViewById(R.id.List_add);
-        tv_time = (TextView) findViewById(R.id.List_date);
         back = (ImageButton) findViewById(R.id.List_back);
         change = (ImageButton) findViewById(R.id.List_change);
-        time_left = (ImageButton) findViewById(R.id.time_left);
-        time_right = (ImageButton) findViewById(R.id.time_right);
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         tv_add.setText(place);
-        tv_time.setText(time);
         back.setOnClickListener(this);
         change.setOnClickListener(this);
-        time_left.setOnClickListener(this);
-        time_right.setOnClickListener(this);
         currentPosition=0;
         layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
@@ -128,10 +122,6 @@ public class ListItem extends Activity implements View.OnClickListener {
                 if(currentPosition<itemDatas.size()) {
                     listInfo(recyclerView);
                 }
-                break;
-            case R.id.time_left:
-                break;
-            case R.id.time_right:
                 break;
         }
 

@@ -31,36 +31,6 @@
             android:background="@drawable/change_list"
             />
     </FrameLayout>
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="#5CACEE"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        >
-        <ImageButton
-            android:id="@+id/time_left"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:background="@drawable/left"
-            />
-        <TextView
-            android:id="@+id/List_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="地址"
-            />
-        <ImageButton
-            android:id="@+id/time_right"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="right"
-            android:background="@drawable/right"
-            />
-    </FrameLayout>
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -135,6 +135,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 //            iv.setBackgroundResource(R.drawable.rb);
             address = "日本";
         }
+        btnAddress.setText(address);
     }
 
 }

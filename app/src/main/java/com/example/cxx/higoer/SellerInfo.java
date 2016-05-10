@@ -21,7 +21,7 @@ import com.example.cxx.higoer.order_place.PlaceOrder;
 import com.example.cxx.higoer.volleyget.GetImage;
 import com.google.gson.Gson;
 
-public class SellerInfo extends AppCompatActivity {
+public class SellerInfo extends Activity {
     private TextView name,card_number,phone,domitory;
     private TextView goData,backData,destination,message;
     private ImageView photo;
