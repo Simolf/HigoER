@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.Random;
 
-public class ListItem extends Activity implements View.OnClickListener {
+public class ListItemActivity extends Activity implements View.OnClickListener {
     private int currentPosition;//当前位置
     private int resultArray[];//存放随机卖家信息
     private List<ItemData> itemDatas;//卖家信息对象列表
@@ -96,14 +96,14 @@ public class ListItem extends Activity implements View.OnClickListener {
     }
     //adapter
     private void listInfo(RecyclerView recyclerView1) {
-        MyAdapter myAdapter = new MyAdapter(itemDatas,currentData());
+        ItemAdapter myAdapter = new ItemAdapter(itemDatas,currentData());
         recyclerView1.setAdapter(myAdapter);
         recyclerView1.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
-        myAdapter.setOnItemCliclListener(new MyAdapter.OnRecyclerViewItemClickListener() {
+        myAdapter.setOnItemCliclListener(new ItemAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(String data) {
                 System.out.println("要传递的卡号是：" + data);
-                Intent intent = new Intent(ListItem.this,SellerInfo.class);
+                Intent intent = new Intent(ListItemActivity.this,SellerInfoActivity.class);
                 intent.putExtra("card_number",data);
                 startActivity(intent);
 //                Toast.makeText(getApplicationContext(),"跳转卖家信息",Toast.LENGTH_SHORT).show();

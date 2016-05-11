@@ -19,19 +19,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddressChoose"
+            android:name=".AddressPack.AddressChoose"
             android:label="@string/title_activity_address_choose" >
         </activity>
         <activity
-            android:name=".ListItem"
+            android:name=".ListItemActivity"
             android:label="@string/title_activity_list_item" >
         </activity>
         <activity
-            android:name=".SellerInfo"
+            android:name=".SellerInfoActivity"
             android:label="@string/title_activity_buyer_info" >
         </activity>
         <activity
-            android:name=".order_place.PlaceOrder"
+            android:name=".order_place.PlaceOrderActivity"
             android:label="" >
         </activity>
     </application>

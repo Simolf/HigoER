@@ -12,11 +12,11 @@ import com.example.cxx.higoer.volleyget.GetImage;
 import java.util.List;
 import java.util.Random;
 
-class MyAdapter extends RecyclerView.Adapter implements View.OnClickListener{
+class ItemAdapter extends RecyclerView.Adapter implements View.OnClickListener{
     private int listArray[];
     private List<ItemData> datas;
     public GetImage getImage = new GetImage();
-    MyAdapter(List<ItemData>datas, int listArray[]){
+    ItemAdapter(List<ItemData>datas, int listArray[]){
         System.out.println("constructor");
         this.datas = datas;
         this.listArray = listArray;

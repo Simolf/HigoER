@@ -14,16 +14,16 @@ import java.util.List;
 public class OrderAdapter extends RecyclerView.Adapter{
     public static final int LAST_POSITION=-1;
     private List<String> mData;
-    private List<CommodityInfo>commodities;
+    private List<CommodityEditText>commodities;
     private int list_amount;
-    CommodityInfo commodityInfo;
+    CommodityEditText commodityInfo;
 
-    public List<CommodityInfo> getCommodities() {
+    public List<CommodityEditText> getCommodities() {
         return commodities;
     }
 
     public OrderAdapter(int list_amount){
-        commodities = new ArrayList<CommodityInfo>();
+        commodities = new ArrayList<CommodityEditText>();
         this.list_amount = list_amount;
 
     }
@@ -59,7 +59,7 @@ public class OrderAdapter extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         myViewHolder myViewHolder  = (myViewHolder) holder;
-        commodityInfo = new CommodityInfo(myViewHolder.commodity,myViewHolder.price,myViewHolder.amount);
+        commodityInfo = new CommodityEditText(myViewHolder.commodity,myViewHolder.price,myViewHolder.amount);
         commodities.add(commodityInfo);
 //        myViewHolder.title.setText(mData.get(position));
 //        editTexts.add(myViewHolder.content);

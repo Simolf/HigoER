@@ -3,10 +3,6 @@ package com.example.cxx.higoer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.WindowCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,11 +13,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.cxx.higoer.order_place.PlaceOrder;
+import com.example.cxx.higoer.order_place.PlaceOrderActivity;
 import com.example.cxx.higoer.volleyget.GetImage;
 import com.google.gson.Gson;
 
-public class SellerInfo extends Activity {
+public class SellerInfoActivity extends Activity {
     private TextView name,card_number,phone,domitory;
     private TextView goData,backData,destination,message;
     private ImageView photo;
@@ -56,7 +52,7 @@ public class SellerInfo extends Activity {
         findhim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SellerInfo.this, PlaceOrder.class);
+                Intent i = new Intent(SellerInfoActivity.this, PlaceOrderActivity.class);
                 Bundle b = new Bundle();
                 b.putString("seller_number",sellerData.getCard_number());
                 i.putExtras(b);

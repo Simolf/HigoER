@@ -1,7 +1,5 @@
 package com.example.cxx.higoer.order_place;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
@@ -30,11 +28,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PlaceOrder extends AppCompatActivity {
+public class PlaceOrderActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     OrderAdapter myAdapter;
-    private List<CommodityInfo>commodityInfoList;
-    private List<Order>orders;
+    private List<CommodityEditText>commodityInfoList;
+    private List<OrderData>orders;
     private int list_amount;
     private String seller_number;
     private String orderJson;
@@ -63,7 +61,7 @@ public class PlaceOrder extends AppCompatActivity {
         sumbit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                orders = new ArrayList<Order>();
+                orders = new ArrayList<OrderData>();
                 int b=1;
                 Calendar calendar = Calendar.getInstance();
                 String orderNum=seller_number+calendar.getTime().toString();
@@ -79,7 +77,7 @@ public class PlaceOrder extends AppCompatActivity {
                         }
                     if(b!=0) {
                         for (int i = 0; i < commodityInfoList.size(); i++) {
-                            Order order = new Order();
+                            OrderData order = new OrderData();
                             order.setGood_name(commodityInfoList.get(i).getCommodityText());
                             order.setPrice(commodityInfoList.get(i).getPriceText());
                             order.setAmount(commodityInfoList.get(i).getAmountText());

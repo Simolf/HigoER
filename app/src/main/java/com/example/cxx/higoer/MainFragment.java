@@ -1,5 +1,4 @@
 package com.example.cxx.higoer;
-import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
+import com.example.cxx.higoer.AddressPack.AddressChoose;
 import com.example.cxx.higoer.volleyget.GetImage;
 
 import java.text.ParseException;
@@ -97,7 +95,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
              break;
          //搜索按钮，跳转
          case R.id.search:
-             Intent intent1 = new Intent(getActivity(),ListItem.class);
+             Intent intent1 = new Intent(getActivity(),ListItemActivity.class);
              String time = syear+"-"+smonth+"-"+sday;
              System.out.println(time);
              System.out.println(address);
@@ -115,22 +113,22 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         String respont = data.getStringExtra("address");
         String url = "http://10.0.2.2/address";
-        if(respont.equals("img1")){
+        if(respont.equals("香港")){
             getImage.getLoadImage(iv, url + "0.jpg");
 //            iv.setBackgroundResource(R.drawable.hk1);
             address = "香港";
         }
-        if(respont.equals("img2")){
+        if(respont.equals("澳门")){
             getImage.getLoadImage(iv,url+"1.jpg");
 //            iv.setBackgroundResource(R.drawable.am);
             address = "澳门";
         }
-        if(respont.equals("img3")){
+        if(respont.equals("韩国")){
             getImage.getLoadImage(iv,url+"2.jpg");
 //            iv.setBackgroundResource(R.drawable.hg);
             address = "韩国";
         }
-        if(respont.equals("img4")){
+        if(respont.equals("日本")){
             getImage.getLoadImage(iv,url+"3.jpg");
 //            iv.setBackgroundResource(R.drawable.rb);
             address = "日本";

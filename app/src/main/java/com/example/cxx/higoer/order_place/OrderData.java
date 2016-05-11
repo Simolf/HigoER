@@ -1,6 +1,6 @@
 package com.example.cxx.higoer.order_place;
 
-public class Order {
+public class OrderData {
     private String order_number;
     private String good_name;
     private String price;

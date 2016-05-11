@@ -2,10 +2,10 @@ package com.example.cxx.higoer.order_place;
 
 import android.widget.EditText;
 
-public class CommodityInfo {
+public class CommodityEditText {
     private EditText commodity,price,amount;
 
-    public CommodityInfo(EditText commodity, EditText price, EditText amount) {
+    public CommodityEditText(EditText commodity, EditText price, EditText amount) {
         this.amount = amount;
         this.commodity = commodity;
         this.price = price;
